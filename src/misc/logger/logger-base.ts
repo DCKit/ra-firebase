@@ -6,7 +6,7 @@ export class LoggerBase {
   constructor(private title: string, private cacheEnabledKey: string) {}
 
   private isEnabled() {
-    return !!localStorage.getItem(this.cacheEnabledKey);
+    return !!localStorage?.getItem(this.cacheEnabledKey);
   }
 
   SetEnabled(isEnabled: boolean) {
