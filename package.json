@@ -1,7 +1,10 @@
 {
   "name": "@dckit/ra-firebase",
   "description": "A firebase data provider for the React Admin framework",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "firebase": "^9.6.4",
     "react": "17.x || 18.x",
