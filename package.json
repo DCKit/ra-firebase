@@ -1,7 +1,7 @@
 {
   "name": "@dckit/ra-firebase",
-  "description": "A firebase data provider for the React Admin framework",
-  "version": "0.1.5",
+  "description": "Firebase data provider for the react-admin (fork / ssr ready)",
+  "version": "0.1.6",
   "publishConfig": {
     "access": "public"
   },
@@ -32,7 +32,7 @@
     "microbundle": "^0.15.0",
     "prettier": "^2.8.3",
     "prettier-plugin-organize-imports": "^3.2.2",
-    "ra-core": "3.10.0",
+    "ra-core": "^4.16.17",
     "ts-jest": "^25",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",

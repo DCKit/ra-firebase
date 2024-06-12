@@ -17,7 +17,7 @@ export {
   GetOneParams,
   GetOneResult,
   Identifier,
-  Record,
+  RaRecord as Record,
   UpdateManyParams,
   UpdateManyResult,
   UpdateParams,
