@@ -29,14 +29,6 @@ export function DataProvider(
   logger.SetEnabled(!!options?.logging);
   flogger.SetEnabled(!!options?.firestoreCostsLogger?.enabled);
   flogger.ResetCount(!options?.firestoreCostsLogger?.persistCount);
-  console.log('Creating FirebaseDataProvider', {
-    firebaseConfig,
-    options,
-  });
-  log('Creating FirebaseDataProvider', {
-    firebaseConfig,
-    options,
-  });
 
   const fireWrapper = new FirebaseWrapper(optionsInput, firebaseConfig);
 

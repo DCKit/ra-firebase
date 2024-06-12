@@ -1,5 +1,5 @@
 import { RAFirebaseOptions } from 'providers/options';
-import { LoggerBase, LogNoOp } from './logger-base';
+import { LoggerBase } from './logger-base';
 
 const LOGGER_ENABLEDKEY = 'LOGGING_FIRESTORE_COSTS_ENABLED';
 const logger = new LoggerBase('💸firestore-costs:', LOGGER_ENABLEDKEY);
@@ -37,8 +37,8 @@ export function MakeFirestoreLogger(
       shouldReset && clearCache();
     },
     logDocument(docCount: number) {
-      if (notEnabled()) {
-        return LogNoOp;
+      if (!options?.lazyLoading?.enabled) {
+        return () => null
       }
       const count = incrementRead(docCount);
       const suffix = `+${docCount} (session total=${count} documents read)`;

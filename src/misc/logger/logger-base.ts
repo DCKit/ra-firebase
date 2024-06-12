@@ -1,10 +1,8 @@
-type LogFn = (...args: any) => void;
-
-export const LogNoOp: LogFn = (...args: any) => null;
-
 export class LoggerBase {
   enabled: boolean = false;
-  constructor(private title: string, private cacheEnabledKey: string) {}
+  constructor(private title: string, private cacheEnabledKey: string) {
+    this.enabled = false
+  }
 
   private isEnabled() {
     return this.enabled;
@@ -14,15 +12,16 @@ export class LoggerBase {
     this.enabled = isEnabled;
   }
 
-  public get log() {
-    return this.enabled ? (...args: any) => console.log(this.title, ...args) : LogNoOp;
+  public log(...args: any) {
+    if (!this.enabled) return
+    console.log(this.title, ...args)
   }
-
-  public get warn() {
-    return this.enabled ? (...args: any) => console.warn(this.title, ...args) : LogNoOp;
+  public warn(...args: any) {
+    if (!this.enabled) return
+    console.warn(this.title, ...args)
   }
-
-  public get error() {
-    return this.enabled ? (...args: any) => console.error(this.title, ...args) : LogNoOp;
+  public error(...args: any) {
+    if (!this.enabled) return
+    console.error(this.title, ...args)
   }
 }
