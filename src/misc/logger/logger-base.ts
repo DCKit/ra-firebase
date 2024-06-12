@@ -3,19 +3,15 @@ type LogFn = (...args: any) => void;
 export const LogNoOp: LogFn = (...args: any) => null;
 
 export class LoggerBase {
+  enabled: boolean = false;
   constructor(private title: string, private cacheEnabledKey: string) {}
 
   private isEnabled() {
-    if (!localStorage) return false
-    return !!localStorage?.getItem(this.cacheEnabledKey);
+    return this.enabled;
   }
 
   SetEnabled(isEnabled: boolean) {
-    if (isEnabled) {
-      localStorage && localStorage.setItem(this.cacheEnabledKey, 'true');
-    } else {
-      localStorage && localStorage.removeItem(this.cacheEnabledKey);
-    }
+    this.enabled = isEnabled;
   }
 
   public get log() {

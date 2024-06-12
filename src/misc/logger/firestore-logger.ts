@@ -20,14 +20,14 @@ export function MakeFirestoreLogger(
   }
 
   function incrementRead(incrementBy = 1) {
-    const currentCountRaw = localStorage && localStorage.getItem(KEY_SINGLE) || '';
+    const currentCountRaw = '';
     const currentCount = parseInt(currentCountRaw) || 0;
     const incremented = currentCount + incrementBy;
-    localStorage && localStorage.setItem(KEY_SINGLE, incremented + '');
+    // localStorage && localStorage.setItem(KEY_SINGLE, incremented + '');
     return incremented;
   }
   function clearCache() {
-    localStorage && localStorage.removeItem(KEY_SINGLE);
+    // localStorage && localStorage.removeItem(KEY_SINGLE);
   }
   return {
     SetEnabled(isEnabled: boolean) {

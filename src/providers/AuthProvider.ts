@@ -32,7 +32,7 @@ class AuthClient {
           username,
           password
         );
-        log('HandleAuthLogin: user sucessfully logged in', { user });
+        log('HandleAuthLogin: user successfully logged in', { user });
         return user;
       } catch (e) {
         log('HandleAuthLogin: invalid credentials', { params });

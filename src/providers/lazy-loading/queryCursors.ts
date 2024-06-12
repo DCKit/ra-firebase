@@ -86,7 +86,6 @@ export async function findLastQueryCursor(
   while (!lastQueryCursor && currentPage > 1) {
     currentPage--;
     currentPageParams.pagination.page = currentPage;
-    console.log('getting query cursor currentPage=', currentPage);
     lastQueryCursor = await getQueryCursor(
       collection,
       currentPageParams,
