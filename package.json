@@ -1,7 +1,7 @@
 {
   "name": "@dckit/ra-firebase",
   "description": "A firebase data provider for the React Admin framework",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publishConfig": {
     "access": "public"
   },

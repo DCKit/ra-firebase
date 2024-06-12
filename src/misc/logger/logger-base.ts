@@ -15,35 +15,14 @@ export class LoggerBase {
   }
 
   public get log() {
-    if (!this.isEnabled()) {
-      return LogNoOp;
-    }
-    const boundLogFn: (...args: any) => void = console.log.bind(
-      console,
-      this.title
-    );
-    return boundLogFn;
+    return this.enabled ? (...args: any) => console.log(this.title, ...args) : LogNoOp;
   }
 
   public get warn() {
-    if (!this.isEnabled()) {
-      return LogNoOp;
-    }
-    const boundLogFn: (...args: any) => void = console.warn.bind(
-      console,
-      this.title
-    );
-    return boundLogFn;
+    return this.enabled ? (...args: any) => console.warn(this.title, ...args) : LogNoOp;
   }
 
   public get error() {
-    if (!this.isEnabled()) {
-      return LogNoOp;
-    }
-    const boundLogFn: (...args: any) => void = console.error.bind(
-      console,
-      this.title
-    );
-    return boundLogFn;
+    return this.enabled ? (...args: any) => console.error(this.title, ...args) : LogNoOp;
   }
 }
