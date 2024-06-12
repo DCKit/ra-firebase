@@ -48,7 +48,7 @@ export class FirebaseWrapper implements IFirebaseWrapper {
   constructor(inputOptions: RAFirebaseOptions | undefined, firebaseConfig: {}) {
     const optionsSafe = inputOptions || {};
     this.options = optionsSafe;
-    this._app = (window as any)['_app'] = ObtainFirebaseApp(
+    this._app = ObtainFirebaseApp(
       firebaseConfig,
       optionsSafe
     );
