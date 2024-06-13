@@ -2,7 +2,7 @@ import firebase from 'firebase/compat';
 import { doc } from 'firebase/firestore';
 import {
   FromFirestoreResult,
-  recusivelyCheckObjectValue,
+  recursivelyCheckObjectValue,
   translateDocFromFirestore,
 } from '../src/misc';
 import { FireStoreDocumentRef } from '../src/misc/firebase-models';
@@ -75,7 +75,7 @@ describe('timestamp-parser tests', () => {
 
   test('retains falsey', () => {
     const document = ['okay'];
-    recusivelyCheckObjectValue(document, '', blankResultObj());
+    recursivelyCheckObjectValue(document, '', blankResultObj());
     expect(document[0]).toBe('okay');
   });
 
@@ -83,7 +83,7 @@ describe('timestamp-parser tests', () => {
     const client = await MakeMockClient();
     const document = { ref: makeDocumentRef('something/here', client) } as any;
     const result = blankResultObj();
-    recusivelyCheckObjectValue(document, '', result);
+    recursivelyCheckObjectValue(document, '', result);
     expect(result.refdocs.length).toBe(1);
     expect(document.ref).toBe('here');
   });

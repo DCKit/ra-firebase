@@ -26,23 +26,19 @@ export function translateDocFromFirestore(obj: any) {
   }
   Object.keys(obj).map((key) => {
     const value = obj[key];
-    obj[key] = recusivelyCheckObjectValue(value, key, result);
+    obj[key] = recursivelyCheckObjectValue(value, key, result);
   });
   result.parsedDoc = obj;
   return result;
 }
 
-export function recusivelyCheckObjectValue(
+export function recursivelyCheckObjectValue(
   input: any,
   fieldPath: string,
   result: FromFirestoreResult
 ): any {
-  const isFalsey = !input;
-  if (isFalsey) {
-    return input;
-  }
   const isPrimitive = typeof input !== 'object';
-  if (isPrimitive) {
+  if (!input || isPrimitive) {
     return input;
   }
   const isTimestamp = !!input.toDate && typeof input.toDate === 'function';
@@ -52,7 +48,7 @@ export function recusivelyCheckObjectValue(
   const isArray = Array.isArray(input);
   if (isArray) {
     return (input as any[]).map((value, index) =>
-      recusivelyCheckObjectValue(value, `${fieldPath}.${index}`, result)
+      recursivelyCheckObjectValue(value, `${fieldPath}.${index}`, result)
     );
   }
   const isDocumentReference = isInputADocReference(input);
@@ -68,7 +64,7 @@ export function recusivelyCheckObjectValue(
   if (isObject) {
     Object.keys(input).map((key) => {
       const value = input[key];
-      input[key] = recusivelyCheckObjectValue(value, key, result);
+      input[key] = recursivelyCheckObjectValue(value, key, result);
     });
     return input;
   }
