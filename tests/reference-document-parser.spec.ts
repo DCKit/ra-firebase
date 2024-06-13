@@ -1,7 +1,7 @@
 import {
   applyRefDocs,
   RefDocFound,
-  REF_INDENTIFIER,
+  REF_FULLPATH,
   translateDocFromFirestore,
   translateDocToFirestore,
 } from '../src/misc';
@@ -51,7 +51,7 @@ describe('reference-document-parser.spec', () => {
         somefield: 'okay',
       };
       const result = applyRefDocs(doc, [makeRefDocFound('doc1', 'my/doc')]);
-      expect(result[REF_INDENTIFIER + 'doc1']).toBe('my/doc');
+      expect(result[REF_FULLPATH + 'doc1']).toBe('my/doc');
     });
   });
 });

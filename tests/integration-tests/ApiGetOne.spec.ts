@@ -1,5 +1,5 @@
 import { collection, doc, setDoc } from 'firebase/firestore';
-import { REF_INDENTIFIER } from '../../src/misc';
+import { REF_FULLPATH } from '../../src/misc';
 import { FireStore } from '../../src/misc/firebase-models';
 import { GetOne } from '../../src/providers/queries';
 import { MakeMockClient } from './utils/test-helpers';
@@ -69,6 +69,6 @@ describe('api methods', () => {
     const data = result.data as any;
     expect(data).toBeTruthy();
     expect(data['myrefdoc']).toBe(refId);
-    expect(data[`${REF_INDENTIFIER}myrefdoc`]).toBe(refFullPath);
+    expect(data[`${REF_FULLPATH}myrefdoc`]).toBe(refFullPath);
   }, 100000);
 });

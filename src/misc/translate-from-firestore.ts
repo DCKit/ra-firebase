@@ -2,7 +2,7 @@ import { getDownloadURL, ref } from 'firebase/storage';
 import { has, set } from 'lodash';
 import { IFirebaseWrapper } from 'providers/database';
 import { FireStoreDocumentRef } from './firebase-models';
-import { REF_INDENTIFIER } from './internal.models';
+import { REF_FULLPATH } from './internal.models';
 import { logError } from './logger';
 
 export interface RefDocFound {
@@ -86,7 +86,7 @@ function isInputADocReference(input: any): boolean {
 
 export function applyRefDocs(doc: any, refDocs: RefDocFound[]) {
   refDocs.map((d) => {
-    set(doc, REF_INDENTIFIER + d.fieldPath, d.refDocPath);
+    set(doc, REF_FULLPATH + d.fieldPath, d.refDocPath);
   });
   return doc;
 }

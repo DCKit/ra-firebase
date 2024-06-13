@@ -1,4 +1,4 @@
-import { REF_INDENTIFIER } from './internal.models';
+import { REF_FULLPATH } from './internal.models';
 
 interface ParsedUpload {
   fieldDotsPath: string;
@@ -45,7 +45,7 @@ export function recusivelyParseObjectValue(
     return input;
   }
   const isRefField =
-    typeof fieldPath === 'string' && fieldPath.includes(REF_INDENTIFIER);
+    typeof fieldPath === 'string' && fieldPath.includes(REF_FULLPATH);
   if (isRefField) {
     const refDocFullPath = input as string;
     result.refdocs.push({
